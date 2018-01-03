@@ -57,12 +57,14 @@ function getFourWords(wordList){
 }
 
 function replaceWords(fourWords, lyrics){
+  console.log(fourWords)
   return lyrics.replaceAll(fourWords[0],w1.value).replaceAll(fourWords[1],w2.value).replaceAll(fourWords[2],w3.value).replaceAll(fourWords[3],w4.value)
 }
 
 //Taken from http://cwestblog.com/2011/07/25/javascript-string-prototype-replaceall/
 String.prototype.replaceAll = function(target, replacement) {
-  return this.split(target).join(replacement);
+  var lowString = this.toLowerCase()
+  return lowString.split(target).join(replacement);
 };
 
 // Taken from: https://stackoverflow.com/questions/30906807/word-frequency-in-javascript
