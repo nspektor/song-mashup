@@ -2,11 +2,50 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>song mashup mashine</title>
+    <title>Song Mashup Machine</title>
+    <style>
+    body{
+      background-color : #F1F1F1;
+    }
+    h1{
+      size: 21pt;
+      color: #40A798;
+      font-family:cursive;
+    }
+    p{
+      size: 16pt;
+      color:#476269;
+    }
+    form{
+      background-color: #F5E1DA;
+      size: 16pt;
+      color: #40A798;
+      font-family:cursive;
+      font-weight:bold;
+      padding: 10pt;
+      margin-left: 200pt;
+      margin-right: 200pt;
+    }
+    input{
+      margin-bottom: 10pt;
+    }
+    #left-image{
+      position:fixed;
+      top:0px;
+      left:-100px;
+    }
+    #right-image{
+      position:fixed;
+      bottom:0;
+      right:0;
+
+    }
+  </style>
   </head>
   <body>
     <center>
-      <div id="greeting"></div>
+      <h1><div id="greeting"></div></h1>
+      <div id="left-image"><img src="https://image.flaticon.com/icons/png/512/2/2227.png" alt="treble clef"></div>
       <form id="form">
          Song: <input type="text" id="song" placeholder="Enter song here"><br>
          Artist: <input type="text" id="artist" placeholder="Enter artist here"><br>
@@ -16,7 +55,8 @@
          Random Word: <input type="text" id="w4" placeholder="Enter a random word!"><br>
          <input type="submit" Value="submit"><br>
       </form>
-      <p id="lyrics"></p>
+      <h1 id="lyrics"></h1>
+      <div id="right-image"><img src="http://hddfhm.com/images/clipart-musical-note-7.png" alt="treble clef" width="100pt" height="100pt"></div>
     </center>
 
 

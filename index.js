@@ -1,7 +1,7 @@
 const greetingEl = document.getElementById("greeting")
 
 window.onload = () => {
-  greetingEl.innerText = "pick a song, any song!"
+  greetingEl.innerText = "Pick a song, any song!"
   //renderAstros()
 }
 
