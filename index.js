@@ -51,9 +51,10 @@ var getFreqs = (lyricStr) => {
     /* Below is a regular expression that finds alphanumeric characters
        Next is a string that could easily be replaced with a reference to a form control
        Lastly, we have an array that will hold any words matching our pattern */
-    var pattern = /\w+/g,
-        string = lyricStr.replace(/[.,\/#!$%\^&\*;:{}=\-_`'~()]/g,"").toLowerCase(),
-        matchedWords = string.match( pattern );
+    var pattern = /\w+/g
+    var string = lyricStr.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase()
+    var matchedWords = string.split(/\s/g)
+        //matchedWords = string.match( pattern );
 
 
     /* The Array.prototype.reduce method assists us in producing a single value from an
