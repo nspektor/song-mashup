@@ -1,8 +1,6 @@
 const greetingEl = document.getElementById("greeting")
-const astrosEl = document.getElementById("astros")
 
 window.onload = () => {
-  alert("hi")
   greetingEl.innerText = "pick a song, any song!"
   //renderAstros()
 }
@@ -34,8 +32,10 @@ async function getLyrics() {
     try {
       let response = await fetch("https://api.lyrics.ovh/v1/" + artist.value + "/" + song.value.replace(" ", "+"))
       let lyricObj = await response.json()
-      lyricsEl.innerText = lyricObj.lyrics
-      getFreqs(lyricObj.lyrics)
+      let orderedWords = getFreqs(lyricObj.lyrics)
+      let fourWords = getFourWords(orderedWords)
+      let finalLyrics = replaceWords(fourWords, lyricObj.lyrics)
+      lyricsEl.innerText = finalLyrics
       console.log("LYRICSSSS?")
       console.log(lyrics)
     } catch (error) {
@@ -43,6 +43,27 @@ async function getLyrics() {
     }
 }
 
+
+function getFourWords(wordList){
+  var words = []
+  var count = 0
+  for(i=0; i<wordList.length && count < 4; i++){
+    if(wordList[i].length > 3){
+      words.push(wordList[i])
+      count++
+    }
+  }
+  return words
+}
+
+function replaceWords(fourWords, lyrics){
+  return lyrics.replaceAll(fourWords[0],w1.value).replaceAll(fourWords[1],w2.value).replaceAll(fourWords[2],w3.value).replaceAll(fourWords[3],w4.value)
+}
+
+//Taken from http://cwestblog.com/2011/07/25/javascript-string-prototype-replaceall/
+String.prototype.replaceAll = function(target, replacement) {
+  return this.split(target).join(replacement);
+};
 
 // Taken from: https://stackoverflow.com/questions/30906807/word-frequency-in-javascript
 var getFreqs = (lyricStr) => {
@@ -54,8 +75,6 @@ var getFreqs = (lyricStr) => {
     var pattern = /\w+/g,
         string = lyricStr.replace(/[.,\/#!$%\^&\*;:{}=\-_`'~()]/g,"").toLowerCase(),
         matchedWords = string.match( pattern );
-
-
     /* The Array.prototype.reduce method assists us in producing a single value from an
        array. In this case, we're going to use it to output an object with results. */
     var counts = matchedWords.reduce(function ( stats, word ) {
@@ -71,14 +90,12 @@ var getFreqs = (lyricStr) => {
                As a result, let's add a new entry, and set count to 1. */
             stats[ word ] = 1;
         }
-
         /* Because we are building up `stats` over numerous iterations,
            we need to return it for the next pass to modify it. */
         return stats;
-
     }, {} );
-
     /* Now that `counts` has our object, we can log it. */
     console.log( counts );
+    return ( Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}) )
 
 }
