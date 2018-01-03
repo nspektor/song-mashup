@@ -34,18 +34,16 @@ async function getLyrics() {
     try {
       let response = await fetch("https://api.lyrics.ovh/v1/" + artist.value + "/" + song.value.replace(" ", "+"))
       let lyricObj = await response.json()
-<<<<<<< HEAD
-      lyricsEl.innerText = newLyrics(lyricObj.lyrics)
-=======
       lyricsEl.innerText = lyricObj.lyrics
       getFreqs(lyricObj.lyrics)
->>>>>>> 925a341df3f20aaa3e027355e3ea1eff69beb2c5
       console.log("LYRICSSSS?")
       console.log(lyrics)
     } catch (error) {
       console.log(error)
     }
 }
+
+
 // Taken from: https://stackoverflow.com/questions/30906807/word-frequency-in-javascript
 var getFreqs = (lyricStr) => {
     // lyricStr.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
@@ -57,19 +55,10 @@ var getFreqs = (lyricStr) => {
         string = lyricStr.replace(/[.,\/#!$%\^&\*;:{}=\-_`'~()]/g,"").toLowerCase(),
         matchedWords = string.match( pattern );
 
-<<<<<<< HEAD
-function newLyrics(lyrics){
-  console.log(getFrequency(lyrics))
-  return lyrics
-}
 
-
-
-=======
     /* The Array.prototype.reduce method assists us in producing a single value from an
        array. In this case, we're going to use it to output an object with results. */
     var counts = matchedWords.reduce(function ( stats, word ) {
->>>>>>> 925a341df3f20aaa3e027355e3ea1eff69beb2c5
 
         /* `stats` is the object that we'll be building up over time.
            `word` is each individual entry in the `matchedWords` array */
