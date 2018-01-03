@@ -5,8 +5,17 @@
     <title>song mashup mashine</title>
   </head>
   <body>
-    <div id="greeting"></div>
-    <ul id="songs"></ul>
+    <center>
+      <div id="greeting"></div>
+      <form id="form">
+         Song: <input type="text" id="song" placeholder="Enter song here"><br>
+         Artist: <input type="text" id="artist" placeholder="Enter artist here"><br>
+         <input type="submit" Value="submit"><br>
+      </form>
+      <p id="lyrics"></p>
+    </center>
+
+
     <!--order of the files matter, most specific at the top - bottom gets to know about stuff in the top ones-->
     <script src="SongData.js"></script>
     <script src="index.js"></script>
